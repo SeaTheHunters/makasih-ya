@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Gift</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffe6e6; /* Latar merah muda */
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .page {
+            display: none; /* Semua halaman disembunyikan dulu */
+        }
+        .active {
+            display: block; /* Halaman aktif ditampilkan */
+        }
+        h1, p {
+            color: #d63384; /* Warna pink gelap */
+        }
+        img {
+            max-width: 300px;
+            height: auto;
+            margin: 20px 0;
+        }
+        button {
+            background-color: #ff69b4; /* Pink */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #ff1493; /* Pink gelap */
+        }
+        /* Animasi Coklat */
+        .chocolate-box {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            background-image: url('path/to/your/chocolate-box.jpg'); /* Ganti dengan gambar kotak coklat */
+            background-size: cover;
+            animation: openBox 2s ease-in-out forwards;
+        }
+        @keyframes openBox {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1) rotate(5deg); } /* Kotak terbuka */
+            100% { transform: scale(0.8) rotate(0deg); opacity: 0; } /* Hilang */
+        }
+        .melted-chocolate {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            background-image: url('path/to/your/melted-chocolate.jpg'); /* Ganti dengan gambar coklat cair */
+            background-size: cover;
+            opacity: 0;
+            animation: melt 2s 2s ease-in-out forwards; /* Mulai setelah openBox selesai */
+        }
+        @keyframes melt {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); } /* Coklat muncul dan membesar */
+            100% { opacity: 1; transform: translate(-50%, -50%) scale(1) translateY(50px); } /* Turun seperti mencair */
+        }
+        .link-dana {
+            margin-top: 20px;
+            opacity: 0;
+            animation: showLink 1s 4s forwards; /* Muncul setelah animasi */
+        }
+        @keyframes showLink {
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1: Halaman Utama -->
+    <div id="page1" class="page active">
+        <h1>Happy Valentine!</h1>
+        <p>EDIT DI SINI: Pesan Valentine spesial untukmu. Aku buat ini dengan cinta. Klik tombol di bawah untuk lihat hadiah spesial!</p>
+        <img src="path/to/your/valentine-image.jpg" alt="Gambar Valentine"> <!-- Ganti path gambar -->
+        <button onclick="showPage('page2')">Buka Hadiah</button>
+    </div>
+
+    <!-- Page 2: Animasi Coklat -->
+    <div id="page2" class="page">
+        <h1>Hadiah Valentine</h1>
+        <p>EDIT DI SINI: Ini hadiah coklat spesial buatmu. Nikmati animasinya!</p>
+        <div class="chocolate-box">
+            <div class="melted-chocolate"></div>
+        </div>
+        <div class="link-dana">
+            <p>EDIT DI SINI: Sekarang, ini link Dana untuk hadiah uang atau apa pun. Klik di sini!</p>
+            <a href="https://link.dana.id/your-link-here" target="_blank"> <!-- Ganti dengan link Dana asli -->
+                <button>Buka Link Dana</button>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            // Sembunyikan semua halaman
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            // Tampilkan halaman yang dipilih
+            document.getElementById(pageId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
